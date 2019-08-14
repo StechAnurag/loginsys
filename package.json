@@ -1,0 +1,38 @@
+{
+  "name": "loginsys",
+  "version": "1.0.0",
+  "description": "A simple local login-registration system",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anuragRex/loginsys.git"
+  },
+  "keywords": [
+    "NodeJS"
+  ],
+  "author": "Anurag Shrivastava",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anuragRex/loginsys/issues"
+  },
+  "homepage": "https://github.com/anuragRex/loginsys#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-flash": "^0.1.1",
+    "ejs": "^2.6.2",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.0",
+    "express-session": "^1.16.2",
+    "mongoose": "^5.6.9",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
