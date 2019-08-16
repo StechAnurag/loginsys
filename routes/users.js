@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const User = require('../models/users');
 const bcrypt = require('bcryptjs');
+const passport = require('passport');
 
 router.get('/login', (req, res)=>{
     res.render('login');
@@ -65,7 +66,8 @@ router.post('/register', async (req, res) => {
             });
             
             await newUser.save();
-            res.redirect('/login'); 
+            req.flash('success_msg', 'You are now registered and can log in.');
+            res.redirect('/users/login'); 
         }catch(ex){
             console.log(ex);
             errors.push('Internal Server Error');
@@ -80,5 +82,21 @@ router.post('/register', async (req, res) => {
     }
 
 });
+
+// Handle Login
+router.post('/login', (req, res, next) => {
+    passport.authenticate('local', {
+        successRedirect : '/dashboard',
+        failureRedirect : '/users/login',
+        failureFlash : true
+    })(req, res, next);
+});
+
+// Handle Logout
+router.get('/logout', (req, res) => {
+    req.logOut();
+    req.flash('success_msg', 'Logged out successfully!');
+    res.redirect('/users/login');
+})
 
 module.exports = router;
